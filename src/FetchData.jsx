@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DetailPage from "./DetailPage";
+
 
 export default function FetchData(country) {
   const [countries, setCountries] = useState([]);
