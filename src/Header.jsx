@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header() {
+export default function Header({selectedCountry}) {
   return (
     <>
       <div className="bg-[#fafafa] text-[#111827] shadow-md py-20 px-6 flex justify-between font-sans">
