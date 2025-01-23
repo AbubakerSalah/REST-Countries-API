@@ -3,7 +3,7 @@ import React from "react";
 export default function Header() {
   return (
     <>
-      <div className="bg-[#fff] text-[#111827] py-20 px-6 flex justify-between font-sans">
+      <div className="bg-[#fafafa] text-[#111827] shadow-md py-20 px-6 flex justify-between font-sans">
 
         <h1 className="font-semibold text-2xl">Where in the world?</h1>
 
