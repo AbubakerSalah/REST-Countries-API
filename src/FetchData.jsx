@@ -56,13 +56,16 @@ export default function FetchData() {
               {selectedCountry.population.toLocaleString()}
             </p>
             <p className="font-extralight py-2 text-gray-600">
-              <span className="font-normal">Region:</span> {selectedCountry.region}
+              <span className="font-normal">Region:</span>{" "}
+              {selectedCountry.region}
             </p>
             <p className="font-extralight py-2 text-gray-600">
-              <span className="font-normal">Sub Region:</span> {selectedCountry.subregion}
+              <span className="font-normal">Sub Region:</span>{" "}
+              {selectedCountry.subregion}
             </p>
             <p className="font-light  text-gray-600">
-              <span className="font-normal">Capital:</span> {selectedCountry.capital}
+              <span className="font-normal">Capital:</span>{" "}
+              {selectedCountry.capital}
             </p>
           </div>
 
@@ -96,17 +99,17 @@ export default function FetchData() {
           <div>
             <h3 className="font-thin">Border Countries:</h3>
             <p className="">
-              {Object.values(selectedCountry.borders).map(
-                (language, index) => (
-                  <span key={index} className="border px-6 py-1 text-sm font-light">
-                    {language}
-                    {index < Object.values(selectedCountry.borders).length - 1
-                      ? "  "
-                      : ""}
-                  </span>
-                )
-              )}
-                  
+              {Object.values(selectedCountry.borders).map((language, index) => (
+                <span
+                  key={index}
+                  className="border px-6 py-1 text-sm font-light"
+                >
+                  {language}
+                  {index < Object.values(selectedCountry.borders).length - 1
+                    ? "  "
+                    : ""}
+                </span>
+              ))}
             </p>
           </div>
         </div>
