@@ -47,7 +47,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
           />
         </div>
         <p className="py-2 text-gray-600"></p>
-        <h1 className="text-xl font-semibold ">
+        <h1 className="text-xl font-semibold text-[#121517]">
           {selectedCountry?.name?.common || "N/A"}
         </h1>
         <p className="font-extralight py-2 text-gray-600">
@@ -122,7 +122,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
         <div
           onClick={() => setSelectedCountry(country)}
           key={country.cca3}
-          className="border h-[350px] rounded-lg bg-white shadow-md overflow-hidden flex flex-col"
+          className="border h-[440px] rounded-lg bg-white shadow-md overflow-hidden flex flex-col"
         >
           <img
             src={country.flags.svg || country.flags.png}
@@ -130,10 +130,11 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             className="w-full h-[200px] object-cover"
           />
           <div className="p-4">
-            <h1 className="text-2xl font-semibold">{country.name.common}</h1>
-            <p>Population: {country.population.toLocaleString()}</p>
-            <p>Region: {country.region}</p>
-            <p>Capital: {country.capital?.join(", ") || "N/A"}</p>
+            <h1 className="text-2xl py-4 font-semibold text-[#121517]">{country.name.common}</h1>
+            <p className="py-1 text-lg">Population: <span className="text-gray-600 font-extralight">{country.population.toLocaleString()}</span></p>
+            <p className="py-1 text-lg">Region: <span className="text-gray-600 font-extralight">{country.region}</span></p>
+            <p className="py-1 text-lg">Capital: <span className="text-gray-600 font-extralight">{country.capital?.join(", ") || "N/A"}</span></p>
+            
           </div>
         </div>
       ))}
