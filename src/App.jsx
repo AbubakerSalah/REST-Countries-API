@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import SearchInput from "./SearchInput";
 import FetchData from "./FetchData";
 export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -8,7 +7,7 @@ export default function App() {
   return (
     <>
       <Header selectedCountry={selectedCountry} />
-      <SearchInput setSelectedCountry={setSelectedCountry} />
+      
       <FetchData
         setSelectedCountry={setSelectedCountry}
         selectedCountry={selectedCountry}

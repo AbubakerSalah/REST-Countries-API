@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SearchInput from "./SearchInput";
 import axios from "axios";
 
 export default function FetchData({ selectedCountry, setSelectedCountry }) {
@@ -69,7 +70,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
           <span className="font-normal">Sub Region:</span>{" "}
           {selectedCountry?.subregion || "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="font-extralight py-2 mb-6 text-gray-600">
           <span className="font-normal">Capital:</span>{" "}
           {selectedCountry?.capital?.join(", ") || "N/A"}
         </p>
@@ -112,7 +113,11 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-8">
+    <>
+    <div className="p-6">
+    <SearchInput />
+    </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-10">
       {countries.map((country) => (
         <div
           onClick={() => setSelectedCountry(country)}
@@ -133,5 +138,6 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
         </div>
       ))}
     </div>
+    </>
   );
 }
