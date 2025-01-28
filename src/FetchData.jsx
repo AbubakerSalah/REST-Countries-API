@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SearchInput from "./SearchInput";
 import axios from "axios";
+import SearchInput from "./SearchInput";
 
 export default function FetchData({ selectedCountry, setSelectedCountry }) {
   const [countries, setCountries] = useState([]);
@@ -12,7 +12,6 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
       try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
         setCountries(response.data);
-        console.log(response.data);
         setLoading(false);
       } catch (e) {
         setError(e.message || "Something went wrong");
@@ -30,7 +29,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
       <div className="p-8">
         <button
           onClick={() => setSelectedCountry(null)}
-          className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] text-[#111827] font-extralight  shadow-even hover:shadow-lg transition-shadow duration-300"
+          className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] text-[#111827] font-extralight shadow-even hover:shadow-lg transition-shadow duration-300"
         >
           <ion-icon
             name="arrow-back-outline"
@@ -46,35 +45,34 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             className="w-[400px] h-full object-cover"
           />
         </div>
-        <p className="py-2 text-gray-600"></p>
         <h1 className="text-xl font-semibold text-[#121517]">
           {selectedCountry?.name?.common || "N/A"}
         </h1>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Native Name:</span>{" "}
           {selectedCountry?.name?.nativeName
-            ? Object.values(selectedCountry?.name?.nativeName)
+            ? Object.values(selectedCountry.name.nativeName)
                 .map((native) => native.common)
                 .join(", ")
             : "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Population:</span>{" "}
           {selectedCountry?.population?.toLocaleString() || "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Region:</span>{" "}
           {selectedCountry?.region || "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Sub Region:</span>{" "}
           {selectedCountry?.subregion || "N/A"}
         </p>
-        <p className="font-extralight py-2 mb-6 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Capital:</span>{" "}
           {selectedCountry?.capital?.join(", ") || "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Currencies:</span>{" "}
           {selectedCountry?.currencies
             ? Object.values(selectedCountry.currencies)
@@ -82,7 +80,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
                 .join(", ")
             : "N/A"}
         </p>
-        <p className="font-extralight py-2 text-gray-600">
+        <p className="py-2 text-gray-600">
           <span className="font-normal">Languages:</span>{" "}
           {selectedCountry?.languages
             ? Object.values(selectedCountry.languages).join(", ")
@@ -96,11 +94,8 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
                   (country) => country.cca3 === borderCode
                 );
                 return (
-                  <div className=" ">
-                    <span
-                      key={borderCode}
-                      className="border px-6 py-1 text-sm font-light shadow-sm"
-                    >
+                  <div key={borderCode}>
+                    <span className="border px-6 py-1 text-sm font-light shadow-sm">
                       {borderCountry?.name?.common || borderCode}
                     </span>
                   </div>
@@ -114,31 +109,47 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
 
   return (
     <>
-    <div className="p-6">
-    <SearchInput />
-    </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-10">
-      {countries.map((country) => (
-        <div
-          onClick={() => setSelectedCountry(country)}
-          key={country.cca3}
-          className="border h-[440px] rounded-lg bg-white shadow-md overflow-hidden flex flex-col"
-        >
-          <img
-            src={country.flags.svg || country.flags.png}
-            alt={`${country.name.common} flag`}
-            className="w-full h-[200px] object-cover"
-          />
-          <div className="p-4">
-            <h1 className="text-2xl py-4 font-semibold text-[#121517]">{country.name.common}</h1>
-            <p className="py-1 text-lg">Population: <span className="text-gray-600 font-extralight">{country.population.toLocaleString()}</span></p>
-            <p className="py-1 text-lg">Region: <span className="text-gray-600 font-extralight">{country.region}</span></p>
-            <p className="py-1 text-lg">Capital: <span className="text-gray-600 font-extralight">{country.capital?.join(", ") || "N/A"}</span></p>
-            
+      <div className="p-6">
+        <SearchInput countries={countries} />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-10">
+        {countries.map((country) => (
+          <div
+            onClick={() => setSelectedCountry(country)}
+            key={country.cca3}
+            className="border h-[440px] rounded-lg bg-white shadow-md overflow-hidden flex flex-col"
+          >
+            <img
+              src={country.flags.svg || country.flags.png}
+              alt={`${country.name.common} flag`}
+              className="w-full h-[200px] object-cover"
+            />
+            <div className="p-4">
+              <h1 className="text-2xl py-4 font-semibold text-[#121517]">
+                {country.name.common}
+              </h1>
+              <p className="py-1 text-lg">
+                Population:{" "}
+                <span className="text-gray-600 font-extralight">
+                  {country.population.toLocaleString()}
+                </span>
+              </p>
+              <p className="py-1 text-lg">
+                Region:{" "}
+                <span className="text-gray-600 font-extralight">
+                  {country.region}
+                </span>
+              </p>
+              <p className="py-1 text-lg">
+                Capital:{" "}
+                <span className="text-gray-600 font-extralight">
+                  {country.capital?.join(", ") || "N/A"}
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </>
   );
 }
