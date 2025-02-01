@@ -7,7 +7,6 @@ export default function App() {
   return (
     <>
       <Header selectedCountry={selectedCountry} />
-      
       <FetchData
         setSelectedCountry={setSelectedCountry}
         selectedCountry={selectedCountry}

@@ -24,6 +24,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+
   if (selectedCountry) {
     return (
       <div className="p-8">
@@ -110,8 +111,12 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
   return (
     <>
       <div className="p-6">
-        <SearchInput countries={countries} />
+        <SearchInput countries={countries} 
+        selectedCountry={selectedCountry}
+        setSelectedCountry={setSelectedCountry}
+        />
       </div>
+      {/*remove*/}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-10">
         {countries.map((country) => (
           <div
