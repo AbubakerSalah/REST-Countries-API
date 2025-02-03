@@ -65,10 +65,10 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             className="w-[400px] h-full object-cover"
           />
         </div>
-        <h1 className="text-xl font-semibold text-[#121517]">
+        <h1 className="text-xl font-semibold text-[#121517] dark:text-white">
           {selectedCountry?.name?.common || "N/A"}
         </h1>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Native Name:</span>{" "}
           {selectedCountry?.name?.nativeName
             ? Object.values(selectedCountry.name.nativeName)
@@ -76,23 +76,23 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
                 .join(", ")
             : "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Population:</span>{" "}
           {selectedCountry?.population?.toLocaleString() || "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Region:</span>{" "}
           {selectedCountry?.region || "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Sub Region:</span>{" "}
           {selectedCountry?.subregion || "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Capital:</span>{" "}
           {selectedCountry?.capital?.join(", ") || "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Currencies:</span>{" "}
           {selectedCountry?.currencies
             ? Object.values(selectedCountry.currencies)
@@ -100,14 +100,14 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
                 .join(", ")
             : "N/A"}
         </p>
-        <p className="py-2 text-gray-600">
+        <p className="py-2 text-gray-600 dark:text-white">
           <span className="font-normal">Languages:</span>{" "}
           {selectedCountry?.languages
             ? Object.values(selectedCountry.languages).join(", ")
             : "N/A"}
         </p>
-        <h3 className="font-light">Border Countries:</h3>
-        <div className="flex flex-wrap gap-2 font-extralight py-2 text-gray-600">
+        <h3 className="font-light dark:text-white">Border Countries:</h3>
+        <div className="flex flex-wrap gap-2 font-extralight py-2 text-gray-600 dark:text-white">
           {selectedCountry?.borders?.length > 0
             ? selectedCountry.borders.map((borderCode) => {
                 const borderCountry = countries.find(
@@ -167,7 +167,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             <div
               onClick={() => setSelectedCountry(country)}
               key={country.cca3}
-              className="border h-[440px] rounded-lg bg-white shadow-md overflow-hidden flex flex-col cursor-pointer"
+              className="border h-[440px] rounded-lg bg-white dark:bg-[#1f2937] text-[#111827] dark:text-white shadow-md overflow-hidden flex flex-col cursor-pointer"
             >
               <img
                 src={country.flags?.svg || country.flags?.png}
@@ -175,24 +175,24 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
                 className="w-full h-[200px] object-cover"
               />
               <div className="p-4">
-                <h1 className="text-2xl py-4 font-semibold text-[#121517]">
+                <h1 className="text-2xl py-4 font-semibold text-[#121517] dark:text-white">
                   {country.name.common}
                 </h1>
                 <p className="py-1 text-lg">
                   Population:{" "}
-                  <span className="text-gray-600 font-extralight">
+                  <span className="text-gray-600 dark:text-white font-extralight">
                     {country.population.toLocaleString()}
                   </span>
                 </p>
                 <p className="py-1 text-lg">
                   Region:{" "}
-                  <span className="text-gray-600 font-extralight">
+                  <span className="text-gray-600 dark:text-white font-extralight">
                     {country.region}
                   </span>
                 </p>
                 <p className="py-1 text-lg">
                   Capital:{" "}
-                  <span className="text-gray-600 font-extralight">
+                  <span className="text-gray-600 dark:text-white font-extralight">
                     {country.capital?.join(", ") || "N/A"}
                   </span>
                 </p>

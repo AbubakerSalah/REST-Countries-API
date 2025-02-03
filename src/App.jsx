@@ -27,6 +27,8 @@ export default function App() {
       <FetchData
         setSelectedCountry={setSelectedCountry}
         selectedCountry={selectedCountry}
+        setDarkMode={setDarkMode}
+      darkMode={darkMode}
       />
     </>
   );
