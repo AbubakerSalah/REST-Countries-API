@@ -167,7 +167,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             <div
               onClick={() => setSelectedCountry(country)}
               key={country.cca3}
-              className="border h-[440px] rounded-lg border-gray-600 bg-white dark:bg-[#1f2937] text-[#111827] dark:text-white shadow-md overflow-hidden flex flex-col cursor-pointer"
+              className="border h-[440px] rounded-lg dark:border-gray-600 bg-white dark:bg-[#1f2937] text-[#111827] dark:text-white shadow-md overflow-hidden flex flex-col cursor-pointer"
             >
               <img
                 src={country.flags?.svg || country.flags?.png}
