@@ -9,5 +9,5 @@ body {
     
     /* Dark Mode */
     .dark body {
-      @apply bg-[#1f2937] text-white;
+      @apply bg-[#1F2B38] text-[#253341];
     }
