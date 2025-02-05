@@ -129,7 +129,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row  lg:justify-between px-10 lg:px-16 py-10">
+      <div className="flex flex-col lg:flex-row  lg:justify-between px-8 lg:px-16 py-10">
         <div className="relative w-full lg:max-w-[35%]  text-[#111827]">
           <div className="mt-7 absolute mx-16 text-4xl text-[#c5c5c5]">
             <ion-icon name="search-outline"></ion-icon>
@@ -161,7 +161,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:px-16 px-14">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:px-16 px-8">
         {filteredCountries.length > 0 ? (
           filteredCountries.map((country) => (
             <div
