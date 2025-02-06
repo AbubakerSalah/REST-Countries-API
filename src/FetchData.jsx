@@ -63,11 +63,11 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             <img
               src={selectedCountry?.flags?.svg || selectedCountry?.flags?.png}
               alt={`${selectedCountry?.name?.common} flag`}
-              className="w-[500px]  h object-cover"
+              className="w-[450px]  h-72 object-cover"
             />
           </div>
           {/*from here */}
-          <div className="flex flex-col lg:justify-center lg:items-start">
+          <div className="flex flex-col lg:justify-end lg:items-start">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16">
             <div>
               <h1 className="text-xl pb-4 font-semibold text-[#121517] dark:text-white">
