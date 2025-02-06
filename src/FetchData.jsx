@@ -46,10 +46,10 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
 
   if (selectedCountry) {
     return (
-      <div className="p-8">
+      <div className="p-16">
         <button
           onClick={() => setSelectedCountry(null)}
-          className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] text-[#111827] font-extralight shadow-even hover:shadow-lg transition-shadow duration-300"
+          className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] dark:text-white dark:bg-[#253341] text-[#111827] font-extralight shadow-even hover:shadow-lg transition-shadow duration-300"
         >
           <ion-icon
             name="arrow-back-outline"
@@ -58,70 +58,92 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
           ></ion-icon>
           Back
         </button>
-        <div className="py-8">
-          <img
-            src={selectedCountry?.flags?.svg || selectedCountry?.flags?.png}
-            alt={`${selectedCountry?.name?.common} flag`}
-            className="w-[400px] h-full object-cover"
-          />
-        </div>
-        <h1 className="text-xl font-semibold text-[#121517] dark:text-white">
-          {selectedCountry?.name?.common || "N/A"}
-        </h1>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Native Name:</span>{" "}
-          {selectedCountry?.name?.nativeName
-            ? Object.values(selectedCountry.name.nativeName)
-                .map((native) => native.common)
-                .join(", ")
-            : "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Population:</span>{" "}
-          {selectedCountry?.population?.toLocaleString() || "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Region:</span>{" "}
-          {selectedCountry?.region || "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Sub Region:</span>{" "}
-          {selectedCountry?.subregion || "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Capital:</span>{" "}
-          {selectedCountry?.capital?.join(", ") || "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Currencies:</span>{" "}
-          {selectedCountry?.currencies
-            ? Object.values(selectedCountry.currencies)
-                .map((currency) => currency.name)
-                .join(", ")
-            : "N/A"}
-        </p>
-        <p className="py-2 text-gray-600 dark:text-white">
-          <span className="font-normal">Languages:</span>{" "}
-          {selectedCountry?.languages
-            ? Object.values(selectedCountry.languages).join(", ")
-            : "N/A"}
-        </p>
-        <h3 className="font-light dark:text-white">Border Countries:</h3>
-        <div className="flex flex-wrap gap-2 font-extralight py-2 text-gray-600 dark:text-white">
-          {selectedCountry?.borders?.length > 0
-            ? selectedCountry.borders.map((borderCode) => {
-                const borderCountry = countries.find(
-                  (country) => country.cca3 === borderCode
-                );
-                return (
-                  <div key={borderCode}>
-                    <span className="border px-6 py-1 text-sm font-light shadow-sm">
-                      {borderCountry?.name?.common || borderCode}
-                    </span>
-                  </div>
-                );
-              })
-            : "No border countries"}
+        <div className="flex flex-col lg:flex-row gap-16">
+          <div className="pt-12">
+            <img
+              src={selectedCountry?.flags?.svg || selectedCountry?.flags?.png}
+              alt={`${selectedCountry?.name?.common} flag`}
+              className="w-[500px]  h object-cover"
+            />
+          </div>
+          {/*from here */}
+          <div className="flex flex-col lg:justify-center lg:items-start">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16">
+            <div>
+              <h1 className="text-xl pb-4 font-semibold text-[#121517] dark:text-white">
+                {selectedCountry?.name?.common || "N/A"}
+              </h1>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Native Name:</span>{" "}
+                {selectedCountry?.name?.nativeName
+                  ? Object.values(selectedCountry.name.nativeName)
+                      .map((native) => native.common)
+                      .join(", ")
+                  : "N/A"}
+              </p>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Population:</span>{" "}
+                {selectedCountry?.population?.toLocaleString() || "N/A"}
+              </p>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Region:</span>{" "}
+                {selectedCountry?.region || "N/A"}
+              </p>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Sub Region:</span>{" "}
+                {selectedCountry?.subregion || "N/A"}
+              </p>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Capital:</span>{" "}
+                {selectedCountry?.capital?.join(", ") || "N/A"}
+              </p>
+            </div>
+            <div>
+              <p className=" text-gray-600 dark:text-white">
+                <span className="font-normal">Currencies:</span>{" "}
+                {selectedCountry?.currencies
+                  ? Object.values(selectedCountry.currencies)
+                      .map((currency) => currency.name)
+                      .join(", ")
+                  : "N/A"}
+              </p>
+              <p className="py-1 text-gray-600 dark:text-white">
+                <span className="font-normal">Languages:</span>{" "}
+                {selectedCountry?.languages
+                  ? Object.values(selectedCountry.languages).join(", ")
+                  : "N/A"}
+              </p>
+            </div>
+            </div>
+
+            <div className="flex mt-6 flex-col lg:flex-row lg:items-center lg:gap-4">
+              {/*border countries */}
+
+              <div>
+                <h3 className="font-light dark:text-white">
+                  Border Countries:
+                </h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2 font-extralight py-2 ">
+                {selectedCountry?.borders?.length > 0
+                  ? selectedCountry.borders.map((borderCode) => {
+                      const borderCountry = countries.find(
+                        (country) => country.cca3 === borderCode
+                      );
+                      return (
+                        <div key={borderCode}>
+                          <span className="px-4 py-1 text-sm font-light shadow-even bg-[#fafafa] dark:text-white dark:bg-[#253341] text-[#111827]">
+                            {borderCountry?.name?.common || borderCode}
+                          </span>
+                        </div>
+                      );
+                    })
+                  : "No border countries"}
+              </div>
+              {/*til*/}
+            </div>
+          </div>
         </div>
       </div>
     );
