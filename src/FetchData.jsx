@@ -46,7 +46,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
 
   if (selectedCountry) {
     return (
-      <div className="p-16">
+      <div className="p-12">
         <button
           onClick={() => setSelectedCountry(null)}
           className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] dark:text-white dark:bg-[#253341] text-[#111827] font-extralight shadow-even hover:shadow-lg transition-shadow duration-300"
