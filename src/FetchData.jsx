@@ -46,7 +46,7 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
 
   if (selectedCountry) {
     return (
-      <div className="p-12">
+      <div className="p-8 mt-10">
         <button
           onClick={() => setSelectedCountry(null)}
           className="flex items-center justify-center gap-3 text-xs py-2 px-6 bg-[#fafafa] dark:text-white dark:bg-[#253341] text-[#111827] font-extralight shadow-even hover:shadow-lg transition-shadow duration-300"
@@ -63,57 +63,57 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             <img
               src={selectedCountry?.flags?.svg || selectedCountry?.flags?.png}
               alt={`${selectedCountry?.name?.common} flag`}
-              className="w-[450px]  h-72 object-cover"
+              className="w-[480px] object-cover"
             />
           </div>
           {/*from here */}
           <div className="flex flex-col lg:justify-end lg:items-start">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16">
-            <div>
-              <h1 className="text-xl pb-4 font-semibold text-[#121517] dark:text-white">
-                {selectedCountry?.name?.common || "N/A"}
-              </h1>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Native Name:</span>{" "}
-                {selectedCountry?.name?.nativeName
-                  ? Object.values(selectedCountry.name.nativeName)
-                      .map((native) => native.common)
-                      .join(", ")
-                  : "N/A"}
-              </p>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Population:</span>{" "}
-                {selectedCountry?.population?.toLocaleString() || "N/A"}
-              </p>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Region:</span>{" "}
-                {selectedCountry?.region || "N/A"}
-              </p>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Sub Region:</span>{" "}
-                {selectedCountry?.subregion || "N/A"}
-              </p>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Capital:</span>{" "}
-                {selectedCountry?.capital?.join(", ") || "N/A"}
-              </p>
-            </div>
-            <div>
-              <p className=" text-gray-600 dark:text-white">
-                <span className="font-normal">Currencies:</span>{" "}
-                {selectedCountry?.currencies
-                  ? Object.values(selectedCountry.currencies)
-                      .map((currency) => currency.name)
-                      .join(", ")
-                  : "N/A"}
-              </p>
-              <p className="py-1 text-gray-600 dark:text-white">
-                <span className="font-normal">Languages:</span>{" "}
-                {selectedCountry?.languages
-                  ? Object.values(selectedCountry.languages).join(", ")
-                  : "N/A"}
-              </p>
-            </div>
+              <div>
+                <h1 className="text-xl pb-4 font-semibold text-[#121517] dark:text-white">
+                  {selectedCountry?.name?.common || "N/A"}
+                </h1>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Native Name:</span>{" "}
+                  {selectedCountry?.name?.nativeName
+                    ? Object.values(selectedCountry.name.nativeName)
+                        .map((native) => native.common)
+                        .join(", ")
+                    : "N/A"}
+                </p>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Population:</span>{" "}
+                  {selectedCountry?.population?.toLocaleString() || "N/A"}
+                </p>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Region:</span>{" "}
+                  {selectedCountry?.region || "N/A"}
+                </p>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Sub Region:</span>{" "}
+                  {selectedCountry?.subregion || "N/A"}
+                </p>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Capital:</span>{" "}
+                  {selectedCountry?.capital?.join(", ") || "N/A"}
+                </p>
+              </div>
+              <div>
+                <p className=" text-gray-600 dark:text-white">
+                  <span className="font-normal">Currencies:</span>{" "}
+                  {selectedCountry?.currencies
+                    ? Object.values(selectedCountry.currencies)
+                        .map((currency) => currency.name)
+                        .join(", ")
+                    : "N/A"}
+                </p>
+                <p className="py-1 text-gray-600 dark:text-white">
+                  <span className="font-normal">Languages:</span>{" "}
+                  {selectedCountry?.languages
+                    ? Object.values(selectedCountry.languages).join(", ")
+                    : "N/A"}
+                </p>
+              </div>
             </div>
 
             <div className="flex mt-6 flex-col lg:flex-row lg:items-center lg:gap-4">
@@ -189,35 +189,40 @@ export default function FetchData({ selectedCountry, setSelectedCountry }) {
             <div
               onClick={() => setSelectedCountry(country)}
               key={country.cca3}
-              className="border h-[440px] rounded-lg dark:border-none bg-white dark:bg-[#253341] text-[#111827] dark:text-white shadow-md overflow-hidden flex flex-col cursor-pointer"
+              className="border w-full h-full pb-12 rounded-lg dark:border-none bg-white dark:bg-[#253341] text-[#111827] dark:text-white shadow-md overflow-hidden flex flex-col cursor-pointer"
             >
-              <img
-                src={country.flags?.svg || country.flags?.png}
-                alt={`${country.name.common} flag`}
-                className="w-full h-[200px] object-cover"
-              />
-              <div className="p-4">
-                <h1 className="text-2xl py-4 font-semibold text-[#121517] dark:text-white">
-                  {country.name.common}
-                </h1>
-                <p className="py-1 text-lg">
-                  Population:{" "}
-                  <span className="text-gray-600 dark:text-white font-extralight">
-                    {country.population.toLocaleString()}
-                  </span>
-                </p>
-                <p className="py-1 text-lg">
-                  Region:{" "}
-                  <span className="text-gray-600 dark:text-white font-extralight">
-                    {country.region}
-                  </span>
-                </p>
-                <p className="py-1 text-lg">
-                  Capital:{" "}
-                  <span className="text-gray-600 dark:text-white font-extralight">
-                    {country.capital?.join(", ") || "N/A"}
-                  </span>
-                </p>
+              <div className="w-full h-56">
+                <img
+                  src={country.flags?.svg || country.flags?.png}
+                  alt={`${country.name.common} flag`}
+                  className="h-full  object-fill md:object-cover"
+                />
+              </div>
+
+              <div>
+                <div className="p-4">
+                  <h1 className="text-2xl py-4 font-semibold text-[#121517] dark:text-white">
+                    {country.name.common}
+                  </h1>
+                  <p className="py-1 text-lg">
+                    Population:{" "}
+                    <span className="text-gray-600 dark:text-white font-extralight">
+                      {country.population.toLocaleString()}
+                    </span>
+                  </p>
+                  <p className="py-1 text-lg">
+                    Region:{" "}
+                    <span className="text-gray-600 dark:text-white font-extralight">
+                      {country.region}
+                    </span>
+                  </p>
+                  <p className="py-1 text-lg">
+                    Capital:{" "}
+                    <span className="text-gray-600 dark:text-white font-extralight">
+                      {country.capital?.join(", ") || "N/A"}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           ))
